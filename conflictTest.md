@@ -1,2 +1,1 @@
-Unable to initialize device PRN
-Unable to initialize device PRN
+Straight up testing it, and by it, hehe, lets just say... my program
