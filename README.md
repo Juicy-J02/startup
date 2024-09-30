@@ -28,11 +28,7 @@ A mockup of the project I put together using Python Pygame:
 - **WebSocket** - High Scores are displayed to all users
 
 ### HTML
- - **HTML pages** - A game board, login, homescreen, and deck customizer HTML page
- - **Text** - Descriptions of gameplay
- - **Images** - Profile Icon
- - **DB/Login** - An input box that will create an account and save gameplay information
- - **WebSocket** - Information on other players joining and Highscores
+ My HTML section of code includes six pages of code. The Index page which includes a mockup of a login with a username and password. A Home page which includes navigation to all other pages and a Live update of other games happening. The Play page will be where the actual game takes place. Currently it only consists of buttons as placeholders for where the game cards would be positioned. Addtionally, it has a live score of the current game. The Deck page shows your current deck of cards and below that, all of the options to swap out your current cards with. The Scores page is a live scoreboard of all the best games done and the best of your own games. Lastly, the about page talks about the gmae itself, the features of the game, and an image that is pulled from a database.
 ### CSS
 - **Navigation Elements** - Customizing the way the UI buttons look
 - **Responsive to window resizing** - Adjust the board to meet the window size
