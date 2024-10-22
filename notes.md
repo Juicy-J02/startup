@@ -31,3 +31,256 @@ ssh -i [key pair file] ubuntu@98.82.105.184
 How to check stats:
 
 ls -l
+
+10/21
+MIDTERM NOTES:
+CS260 Midterm Topics/Questions Review
+
+In the following code, what does the link element do?:
+
+Here are the main attributes of the <link> element:
+rel: Specifies the relationship between the current document and the linked resource. Common values include:
+"stylesheet": Links to an external CSS file.
+"icon": Links to a favicon for the site.
+"preload": Tells the browser to preload resources like fonts or images.
+href: Specifies the URL of the linked resource.
+type: Specifies the type of the linked resource, such as "text/css" for stylesheets.
+
+In the following code,  what does a div tag do?:
+
+Here are key uses of the <div> tag:
+Grouping Content: It allows you to group elements (text, images, forms, etc.) together for organizational purposes.
+Styling: You can apply CSS styles to a <div> to control its appearance, layout, and behavior. For example, you can control its width, height, background color, or borders.
+Layout: Divs are frequently used with CSS frameworks or grid systems to create structured layouts like columns, headers, footers, and sidebars.
+JavaScript Interaction: <div> elements can be targeted and manipulated using JavaScript to make dynamic changes (e.g., showing/hiding content).
+
+In the following code, what is the difference between the #title and .grid selector?:
+
+#title (ID Selector):
+Targets an element with a specific id attribute.
+An id must be unique within the document, meaning no two elements should have the same id.
+The # symbol is used to select an element by its id.
+.grid (Class Selector):
+Targets one or more elements that share the same class attribute.
+A class can be reused for multiple elements throughout the document.
+The . symbol is used to select elements by their class.
+
+In the following code, what is the difference between padding and margin?: 
+
+Padding:
+Padding is the space inside an element, between the content and the element’s border.
+It adds space between the element's content (like text or images) and its border.
+Padding is part of the element itself and affects the element’s background (i.e., background colors or images extend into the padding area).
+Margin:
+Margin is the space outside an element, between the element’s border and neighboring elements.
+It controls the distance between the element and surrounding elements.
+Margins do not affect the element's background, so the background color or image does not extend into the margin area.
+
+Given this HTML and this CSS how will the images be displayed using flex?:
+
+Explanation of Flex Properties:
+display: flex;: Makes the container a flexbox container, enabling Flexbox layout for the child elements (images in this case).
+justify-content: space-around;: Distributes space around the images, so there's equal spacing between and around each image.
+align-items: center;: Vertically centers the images within the container.
+flex-wrap: wrap;: Allows the images to move to a new line if the container becomes too narrow (useful for responsive design).
+img { width: 150px; }: Ensures the images have a fixed width while maintaining their aspect ratio (due to height: auto).
+
+What does the following padding CSS do?
+What does the following code using arrow syntax function declaration do?:
+
+Summary:
+Arrow functions provide a shorter, cleaner syntax for writing functions.
+They do not have their own this context; instead, they inherit this from the surrounding scope.
+They are ideal for scenarios where you don't need a new this binding (like callbacks and event handlers).
+They cannot be used as constructors or in object-oriented patterns that rely on the prototype property.
+
+What does the following code using map with an array output?:
+
+Summary:
+map() is a functional way to iterate over an array and create a new array by transforming the original array's elements.
+It doesn’t change the original array and is used for transformations like converting, mapping values, or applying a function to all elements.
+
+What does the following code output using getElementByID and addEventListener?:
+
+Code Breakdown:
+getElementById:
+document.getElementById('myButton') is used to grab the button element in the DOM with the id of 'myButton'.
+addEventListener:
+button.addEventListener('click', function() {...}); adds an event listener to the button element. It listens for the click event and triggers a function when the button is clicked.
+Inside this function, we use document.getElementById('message') to grab the paragraph with id="message" and change its textContent to 'Button was clicked!'.
+
+What does the following line of Javascript do using a # selector?:
+
+Key Points:
+The # selector is specifically for selecting elements by their ID.
+The ID should be unique within the HTML document, meaning there should only be one element with that ID.
+Once you have selected the element, you can manipulate it (e.g., change its text, style, or add event listeners).
+
+Which of the following are true? (mark all that are true about the DOM):
+
+The Document Object Model (DOM) is an object representation of the HTML elements that the browser uses to render the display. The browser also exposes the DOM to external code so that you can write programs that dynamically manipulate the HTML.
+For everything in an HTML document there is a node in the DOM. This includes elements, attributes, text, comments, and whitespace. All of these nodes form a big tree, with the document node at the top.
+
+By default, the HTML span element has a default CSS display property value of: Inline
+
+How would you use CSS to change all the div elements to have a background color of red?:
+
+div { 
+background-color: red;
+}
+
+How would you display an image with a hyperlink in HTML?:
+
+<body> 
+<a href="https://www.example.com" target="_blank">
+<img src="https://via.placeholder.com/150" alt="Example Image" />
+ 	</a> 
+</body>
+
+In the CSS box model, what is the ordering of the box layers starting at the inside and working out?:
+
+Content => Padding => Border => Margin
+
+Given the following HTML, what CSS would you use to set the text "trouble" to green and leave the "double" text unaffected?: 
+
+<p>
+<span class="green-text">trouble</span> double 
+</p>
+
+.green-text { 
+color: green;
+}
+
+What will the following code output when executed using a for loop and console.log?:
+
+Breakdown:
+Initialization: let i = 0 initializes the loop counter i to 0.
+Condition: i < 5 is checked before each iteration. The loop continues as long as this condition is true.
+Increment: i++ increments i by 1 after each iteration.
+console.log(i): This line outputs the current value of i to the console during each iteration of the loop.
+
+How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green?
+
+What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, third level heading?: P, ol, ul, h2, h1, h3
+
+How do you declare the document type to be html?: <!DOCTYPE html>
+
+What is valid javascript syntax for if, else, for, while, switch statements?:
+
+If (condition) {
+//stuff
+}
+else if (condition2) {
+//other stuff
+}
+else {
+}
+
+for (let i = 0; i < n; i++) {
+//stuff(i)
+}
+
+While (condition) {
+//stuff
+}
+
+do {
+//stuff
+} while (condition);
+
+switch (expression) {
+Case expression1:
+	//stuff
+	break;
+Case expression2:
+	//stuff
+	break;
+default:
+
+What is the correct syntax for creating a javascript object?
+
+let person = { 
+firstName: "John", 
+lastName: "Doe", 
+age: 30,
+ isStudent: false, 
+greet: function() { 
+console.log("Hello, " + this.firstName); 
+} 
+};
+
+Is it possible to add new properties to javascript objects?: Yes
+
+If you want to include JavaScript on an HTML page, which tag do you use? <Script>
+
+Given the following HTML, what JavaScript could you use to set the text "animal" to "crow" and leave the "fish" text unaffected?
+
+Which of the following correctly describes JSON?:
+JSON is a widely used data format that represents structured data using key-value pairs, arrays, and objects. It is commonly used in APIs for data transmission and is easily readable by both humans and machines.
+
+What does the console command chmod, pwd, cd, ls, vim, nano, mkdir, mv, rm, man, ssh, ps, wget, sudo do?
+Chmod: Modifies file or directory permissions. This sets read, write, and execute permissions for the owner, and read and execute permissions for everyone else.
+Pwd: Displays the full path of the current directory.
+Cd: Change directory
+Ls: List
+Vim: Opens the Vim text editor, a powerful command-line text editor.
+Nano: Opens the Nano text editor, a simple, user-friendly text editor.
+Mkdir: Creates a new directory
+Mv: Moves or renames files and directories
+Man: Displays the manual or help page for a command.
+Ssh: Connects to a remote system securely over a network using SSH.
+Ps: Displays currently running processes.
+Wget: Downloads files from the internet.
+Sudo: Executes commands with administrative (root) privileges.
+
+Which of the following console command creates a remote shell session?: 
+
+ssh username@hostname
+
+Which of the following is true when the -la parameter is specified for the ls console command?:
+
+	-l (long listing format): Displays detailed information about files and directories, such as permissions, number of links, owner, group, file size, and modification time.
+-a (all): Shows all files, including hidden files (files whose names start with a dot .), which are not shown by default.
+
+Which of the following is true for the domain name banana.fruit.bozo.click, which is the top level domain, which is a subdomain, which is a root domain?:
+
+Top-Level Domain (TLD): click
+Root Domain: bozo.click
+Subdomain: fruit.bozo.click and more specifically banana.fruit.bozo.click where banana is a subdomain of fruit.
+
+Is a web certificate is necessary to use HTTPS.:
+
+Yes, a web certificate is necessary for HTTPS. Without it, you cannot secure the communication between your server and users through HTTPS.
+
+Can a DNS A record can point to an IP address or another A record.:
+
+An A record can only point to an IP address.
+It cannot point to another A record; use a CNAME record for aliasing to another domain.
+
+Port 443, 80, 22 is reserved for which protocol?:
+
+Port 443: HTTPS (secure web traffic)
+Port 80: HTTP (standard web traffic)
+Port 22: SSH (secure remote access)
+
+What will the following code using Promises output when executed?
+
+Promises: Promises provide a cleaner way to handle asynchronous operations compared to callbacks. They represent a value that may not be available yet but will be resolved or rejected in the future.
+
+const myPromise = new Promise((resolve, reject) => 
+{ const success = true; // Change to false to see the rejection behavior 
+if (success) { 
+resolve("Promise resolved!"); 
+} 
+else { 
+reject("Promise rejected!"); 
+} 
+}); 
+
+myPromise 
+.then(result => { 
+console.log(result); // Will log "Promise resolved!" if resolved 
+}) .catch(error => { 
+console.log(error); // Will log "Promise rejected!" if rejected 
+});
+
