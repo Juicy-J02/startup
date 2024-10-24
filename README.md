@@ -28,11 +28,9 @@ A mockup of the project I put together using Python Pygame:
 - **WebSocket** - High Scores are displayed to all users
 
 ### HTML
- My HTML section of code includes six pages of code. The Index page which includes a mockup of a login with a username and password. A Home page which includes navigation to all other pages and a Live update of other games happening. The Play page will be where the actual game takes place. Currently it only consists of buttons as placeholders for where the game cards would be positioned. Addtionally, it has a live score of the current game. The Deck page shows your current deck of cards and below that, all of the options to swap out your current cards with. The Scores page is a live scoreboard of all the best games done and the best of your own games. Lastly, the about page talks about the gmae itself, the features of the game, and an image that is pulled from a database.
+My HTML section of code includes six pages of code. The Index page which includes a mockup of a login with a username and password. A Home page which includes navigation to all other pages and a Live update of other games happening. The Play page will be where the actual game takes place. Currently it only consists of buttons as placeholders for where the game cards would be positioned. Addtionally, it has a live score of the current game. The Deck page shows your current deck of cards and below that, all of the options to swap out your current cards with. The Scores page is a live scoreboard of all the best games done and the best of your own games. Lastly, the about page talks about the gmae itself, the features of the game, and an image that is pulled from a database.
 ### CSS
-- **Navigation Elements** - Customizing the way the UI buttons look
-- **Responsive to window resizing** - Adjust the board to meet the window size
-**Application text content** - Consistent fonts
+My CSS section of code includes a consistent style between all pages of the website. It is mostly made up of soft sided shapes and primary colors. The buttons on the web react to the mouse being over them and clickable objects are known so by the cursor changing. The Scores section has also been made into an easily readable table.
 ### React
 - **login** - When you press enter or the login button it takes you to the home page
 - **database** - Stores information about individuals accounts
