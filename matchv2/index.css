@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c9c9d8;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    line-height: 1;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+}
+
+input {
+    display: flex;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 5px;
+    list-style-position: inside;
+    justify-content: center;
+}
+
+button {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.login {
+    background-color: #4CAF50;
+    color: black;
+}
+
+.login:hover {
+    background-color: #2d682f;
+}
+
+.create {
+    background-color: #6158df;
+    color: black;
+}
+
+.create:hover {
+    background-color: #443da0;
+}
+

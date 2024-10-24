@@ -81,3 +81,18 @@ button {
 .backbutton:hover {
     background-color: #5e0f0f;
 }
+
+ul {
+    display: flex;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 5px;
+    list-style-position: inside;
+    justify-content: center;
+}
+
+ul li {
+    margin: 20px;
+}
