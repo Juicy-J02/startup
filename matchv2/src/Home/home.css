@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c9c9d8;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    line-height: 1;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+button {
+    width: 200px;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 5px;
+}
+
+.playbutton {
+    background-color: #4CAF50;
+    color: black;
+}
+
+.playbutton:hover {
+    background-color: #2d682f;
+}
+
+.deckbutton {
+    background-color: #6158df;
+    color: black;
+}
+
+.deckbutton:hover {
+    background-color: #443da0;
+}
+
+.scoresbutton {
+    background-color: #ddda25;
+    color: black;
+}
+
+.scoresbutton:hover {
+    background-color: #9e9c1b;
+}
+
+.aboutbutton {
+    background-color: #9e9e9e;
+    color: black;
+}
+
+.aboutbutton:hover {
+    background-color: #5c5c5c;
+}
+
+.backbutton {
+    background-color: #c22424;
+    width: 100px;
+    color: black;
+}
+
+.backbutton:hover {
+    background-color: #5e0f0f;
+}
+
+ul {
+    display: flex;
+    padding: 10px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 5px;
+    list-style-position: inside;
+    justify-content: center;
+}
+
+ul li {
+    margin: 20px;
+}
