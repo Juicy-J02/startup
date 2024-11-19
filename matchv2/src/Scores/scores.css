@@ -1,50 +1,33 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #c9c9d8;
-    margin: 0;
-    padding: 0;
-    color: #000000;
-    line-height: 1;
-}
 
-h1, h2 {
-    text-align: center;
-    color: #000000;
-}
-
-main {
-    width: 80%;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 2px solid #000000;
-}
-
-table {
-    width: 100%;
+.HighScoresTable {
+    width: 90%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    border: 2px solid #616161;
+    margin: 20px 0;
+    font-size: 1rem;
+    text-align: left;
 }
 
-th, td {
-    padding: 12px;
-    text-align: center;
-    border: 2px solid #000000;
+.HighScoresTable thead {
+    background-color: #bdbdbd;
+    border-bottom: 2px solid #616161;
 }
 
-button {
-    width: 100px;
-    margin-left: 8px;
-    padding: 10px;
-    background-color: #c22424;
-    color: black;
-    border: 2px solid #000000;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
+.HighScoresTable th {
+    padding: 12px 15px;
+    color: #495057;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
 }
 
-button:hover {
-    background-color: #5e0f0f;
+.HighScoresTable td {
+    padding: 12px 15px;
+    color: #212529;
+}
+
+.HighScoresTable tbody tr {
+  border-bottom: 1px solid #616161;
 }

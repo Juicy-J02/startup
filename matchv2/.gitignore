@@ -2,4 +2,6 @@ CS260KeyPair.pem
 
 deployFiles.sh
 
+deployReact.sh
+
 node_modules
