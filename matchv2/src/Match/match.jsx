@@ -1,41 +1,57 @@
-import React from "react";
+import React, { useState } from "react";
 import './match.css'
 
 export function Match() {
+
+  const [cards] = useState(shuffle());
+  const [flipped, setFlipped] = useState([]);
+  const [score, setScore] = useState(0);
+  const [matched, setMatched] = useState([]);
+  const finalTotal = cards.length()
+  const GameOver = matched.length === finalTotal;
+
+  function shuffle() {
+    const cardValues = Array.from({length: 9}, (_, i) => i + 1);
+    const deck = [...cardValues, ...cardValues];
+    return deck.sort(() => Math.random() - .5);
+  }
+
+  function match(index) {
+    if (matched.includes(index) || flipped.length === 2 || flipped.includes(index)) {
+      return
+    }
+    const newFlipped = [...flipped, index];
+    setFlipped(newFlipped);
+    if (newFlipped.length === 2) {
+      const [first, second] = newFlipped;
+      setScore(score + 1);
+      if (cards[first] === cards [second]) {
+        setMatched([...matched, first, second])
+      }
+      setTimeout(() => setFlipped([]), 500)
+    }
+  }
+
   return (
-  <main className='container-fluid bg-secondary text-center'>
-    <table className="Board">
-      <tr>
-        <td className="card"><button type="submit">Position 1</button></td>
-        <td className="card"><button type="submit">Position 2</button></td>
-        <td className="card"><button type="submit">Position 3</button></td>
-        <td className="card"><button type="submit">Position 4</button></td>
-        <td className="card"><button type="submit">Position 5</button></td>
-        <td className="card"><button type="submit">Position 6</button></td>
-      </tr>
-      <tr>
-        <td className="card"><button type="submit">Position 7</button></td>
-        <td className="card"><button type="submit">Position 8</button></td>
-        <td className="card"><button type="submit">Position 9</button></td>
-        <td className="card"><button type="submit">Position 10</button></td>
-        <td className="card"><button type="submit">Position 11</button></td>
-        <td className="card"><button type="submit">Position 12</button></td>
-      </tr>
-      <tr>
-        <td className="card"><button type="submit">Position 13</button></td>
-        <td className="card"><button type="submit">Position 14</button></td>
-        <td className="card"><button type="submit">Position 15</button></td>
-        <td className="card"><button type="submit">Position 16</button></td>
-        <td className="card"><button type="submit">Position 17</button></td>
-        <td className="card"><button type="submit">Position 18</button></td>
-      </tr>
-    </table>
-    
-    <h3 className="score">Score: 0</h3>
-    
-    <form method="get" action="home.html">
-      <button className="backbutton" type="submit">Back</button>
-    </form>
+    <main className='container-fluid bg-secondary text-center'>
+    <div className="Game">
+      <div className="Board">
+        {cards.map((card, index) => (
+          <div className="card" key={index}>
+            <button type="submit"
+              onClick={() => match(index)}
+              className={`
+                ${flipped.includes(index) ? "flipped" : ""}
+                ${matched.includes(index) ? "matched" : ""}
+              `}
+            >
+               {(flipped.includes(index) || matched.includes(index)) ? cards[index] : ""}
+            </button>
+          </div>
+        ))}
+      </div>
+      <h3 className="score">Score: {score}</h3>
+    </div>
   </main>
 );
 }

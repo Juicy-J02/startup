@@ -1,3 +1,10 @@
+.DescriptionContainer {
+    width: 90%;
+    height: calc(80vh - 110px);
+    margin: 20px 0;
+    overflow: auto;
+}
+
 .Description {
     display: flex;
     padding: 10px;
@@ -33,14 +40,4 @@
     font-size: 20px;
     margin: 5px;
     justify-content: center;
-}
-
-.backbutton {
-    background-color: #c22424;
-    width: 100px;
-    color: black;
-}
-
-.backbutton:hover {
-    background-color: #5e0f0f;
 }

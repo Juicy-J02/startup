@@ -1,37 +1,57 @@
-h1 {
-    text-align: center;
-    color: #000000;
-}
 
-
-.score {
-    text-align: center;
-}
-
-.Board {
+  .Game {
     display: flex;
-    justify-content: center;
-}
-
-.card {
-    display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    margin: auto;
-}
+    width: 100%;
+  }
 
+  .Board {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3 auto);
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  .card button {
+    width: 100%;
+    height: 175px;
+    background-color: #5a5a5a;
+    color: #ffffff;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .card button:hover {
+    background-color: #353535;
+    border-radius: 5px;
+    transform: scale(1.05);
+  }
 
-.card:hover {
-    background-color: #c9c9d8;
-}
+  .card button.flipped {
+    background-color: #979797;
+    color: #ffffff;
+    cursor: default;
+  }
+  
+  .card button.matched {
+    background-color: aquamarine;
+    color: #ffffff;
+    cursor: default;
+  }
 
-.backbutton {
-    background-color: #c22424;
-    width: 100px;
-    color: black;
-}
-
-.backbutton:hover {
-    background-color: #5e0f0f;
-}
+  .score {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 30px;
+    text-align: center;
+  }
+  

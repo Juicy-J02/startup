@@ -45,10 +45,6 @@ export function Deck() {
             <button type="submit">Card 24</button>
         </tr>
     </table>
-    <p></p>
-    <form method="get" action="home.html">
-        <button className="backbutton" type="submit">Back</button>
-    </form>
   </main>
 );
 }
