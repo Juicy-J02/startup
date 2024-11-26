@@ -42,7 +42,7 @@
   }
   
   .card button.matched {
-    background-color: aquamarine;
+    background-color: #276e2b;
     color: #ffffff;
     cursor: default;
   }
@@ -54,4 +54,56 @@
     margin-top: 30px;
     text-align: center;
   }
+  
+  .gameOver {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+  
+  .gameOver h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .gameOver p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .gameOver button {
+    font-size: 1.25rem;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .gameOver button:hover {
+    background-color: #218838;
+  }
+
+  .restartButton {
+    font-size: 1.25rem;
+    margin: 10px 5px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .restartButton:hover {
+    background-color: #0056b3;
+}
   
