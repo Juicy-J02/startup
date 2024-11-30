@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { About } from './About/about';
 import { Deck } from './Deck/deck';
@@ -10,7 +10,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 function App() {
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  function logout() {
+    setIsLoggedIn(false);
+    window.location.href = '/';
+  }
+
   return (
     <BrowserRouter>
       <div className='body bg-dark text-light'>
@@ -20,42 +26,47 @@ function App() {
               Match
             </div>
             <menu className='navbar-nav'>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to=''>
-                  Login
-                </NavLink>
-              </li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/home'>
-                  Home
-                </NavLink>
-              </li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/deck'>
-                  Deck
-                </NavLink>
-              </li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/match'>
-                  Match
-                </NavLink>
-              </li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/scores'>
-                  Scores
-                </NavLink>
-              </li>
-              <li className='nav-item'>
-                <NavLink className='nav-link' to='/about'>
-                  About
-                </NavLink>
-              </li>
+              {!isLoggedIn ? (
+                <li className='nav-item'>
+                  <NavLink className='nav-link' to='/'>
+                    Login
+                  </NavLink>
+                </li>
+              ) : (
+                <>
+                  <li className='nav-item'>
+                    <NavLink className='nav-link' to='/home'>
+                      Home
+                    </NavLink>
+                  </li>
+                  <li className='nav-item'>
+                    <NavLink className='nav-link' to='/match'>
+                      Match
+                    </NavLink>
+                  </li>
+                  <li className='nav-item'>
+                    <NavLink className='nav-link' to='/scores'>
+                      Scores
+                    </NavLink>
+                  </li>
+                  <li className='nav-item'>
+                    <NavLink className='nav-link' to='/about'>
+                      About
+                    </NavLink>
+                  </li>
+                  <li className="nav-item" onClick={logout}>
+                    <button className="nav-link" style={{ cursor: 'pointer' }}>
+                      Logout
+                    </button>
+                  </li>
+                </>
+              )}
             </menu>
           </nav>
         </header>
 
         <Routes>
-          <Route path='/' element={<Login />} exact />
+          <Route path='/' element={<Login setIsLoggedIn={setIsLoggedIn} />} exact />
           <Route path='/home' element={<Home />} />
           <Route path='/deck' element={<Deck />} />
           <Route path='/match' element={<Match />} />

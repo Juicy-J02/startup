@@ -39,3 +39,20 @@
 .HighScoresTable tbody tr {
   border-bottom: 1px solid #616161;
 }
+
+.clearButton {
+    font-size: 1.25rem;
+    margin: 10px 5px;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .clearButton:hover {
+    background-color: #0056b3;
+}

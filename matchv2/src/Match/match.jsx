@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './match.css';
 
 export function Match() {
-  const [cards] = useState(shuffle());
+  const [cards, setCards] = useState(shuffle());
   const [flipped, setFlipped] = useState([]);
   const [score, setScore] = useState(0);
   const [matched, setMatched] = useState([]);
@@ -34,6 +34,31 @@ export function Match() {
     }
   }
 
+  function restartGame() {
+    setScore(0);
+    setMatched([]);
+    setFlipped([]);
+    setCards(shuffle());
+  }
+  
+  if (isGameOver) {
+    saveScore(score)
+  }
+
+  function saveScore(score) {
+    const now = new Date();
+    const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    const userName = localStorage.getItem('userName') || "Player";
+    const newScore = {
+      name: userName,
+      score,
+      date: now.toLocaleDateString(),
+      time: now.toLocaleTimeString(),
+    };
+    highScores.push(newScore);
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+  }
+
   return (
     <main className='container-fluid bg-secondary text-center'>
       <div className="Game">
@@ -41,7 +66,7 @@ export function Match() {
           <div className="gameOver">
             <h1>You Win!</h1>
             <p>Your final score: {score}</p>
-            <button onClick={() => window.location.reload()}>Play Again</button>
+            <button onClick={() => {restartGame}}>Play Again</button>
           </div>
         ) : (
           <>
@@ -65,7 +90,7 @@ export function Match() {
             <button
               type="button"
               className="restartButton"
-              onClick={() => window.location.reload()}>Restart</button>
+              onClick={() => restartGame()}>Restart</button>
           </>
         )}
       </div>

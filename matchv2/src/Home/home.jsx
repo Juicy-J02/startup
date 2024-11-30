@@ -1,11 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import './home.css'
 
 export function Home() {
+  const navigate = useNavigate();
+
+  const startGame = () => {
+    navigate('/match');
+  }
+
   return (
   <main className='container-fluid bg-secondary text-center'>
     <div className="StartGame">
-        <button className="playbutton" type="submit">Play</button>
+        <button className="playbutton" type="submit" onClick={startGame}>Play</button>
     </div>
     <div className="Notifications">
         <h3 className="NotificationTitle">Live Games:</h3>

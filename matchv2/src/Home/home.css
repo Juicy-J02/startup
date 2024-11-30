@@ -20,7 +20,6 @@
 
 .playbutton:hover {
     background-color: #990000;
-    transform: scale(1.1);
 }
 
 .NotificationTitle {
