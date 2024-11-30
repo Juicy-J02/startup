@@ -10,10 +10,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    const savedLoginState = localStorage.getItem('isLoggedIn');
+    return savedLoginState === 'true';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('isLoggedIn', isLoggedIn);
+  }, [isLoggedIn]);
 
   function logout() {
     setIsLoggedIn(false);
+    localStorage.removeItem('isLoggedIn')
     window.location.href = '/';
   }
 

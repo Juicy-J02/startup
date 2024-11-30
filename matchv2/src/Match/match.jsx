@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './match.css';
 
 export function Match() {
-  const [cards, setCards] = useState(shuffle());
-  const [flipped, setFlipped] = useState([]);
-  const [score, setScore] = useState(0);
-  const [matched, setMatched] = useState([]);
+  const [cards, setCards] = useState(() => {
+    const saved = JSON.parse(localStorage.getItem("cards"));
+    return saved || shuffle();
+  });
+  const [flipped, setFlipped] = useState(() => JSON.parse(localStorage.getItem("flipped")) || []);
+  const [score, setScore] = useState(() => JSON.parse(localStorage.getItem("score")) || 0);
+  const [matched, setMatched] = useState(() => JSON.parse(localStorage.getItem("matched")) || []);
   const isGameOver = matched.length === cards.length;
 
   function shuffle() {
@@ -13,6 +16,13 @@ export function Match() {
     const deck = [...cardValues, ...cardValues];
     return deck.sort(() => Math.random() - 0.5);
   }
+
+  useEffect(() => {
+    localStorage.setItem("cards", JSON.stringify(cards));
+    localStorage.setItem("flipped", JSON.stringify(flipped));
+    localStorage.setItem("score", JSON.stringify(score));
+    localStorage.setItem("matched", JSON.stringify(matched));
+  }, [cards, flipped, score, matched]);
 
   function match(index) {
     if (matched.includes(index) || flipped.length === 2 || flipped.includes(index)) {
@@ -35,20 +45,25 @@ export function Match() {
   }
 
   function restartGame() {
+    const newCards = shuffle();
+    setCards(newCards);
     setScore(0);
     setMatched([]);
     setFlipped([]);
-    setCards(shuffle());
+    localStorage.removeItem("cards");
+    localStorage.removeItem("flipped");
+    localStorage.removeItem("score");
+    localStorage.removeItem("matched");
   }
   
   if (isGameOver) {
-    saveScore(score)
+    saveScore(score);
   }
 
   function saveScore(score) {
     const now = new Date();
-    const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-    const user = JSON.parse(localStorage.getItem('credentials')) || "Player";
+    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    const user = JSON.parse(localStorage.getItem("credentials")) || { userName: "Player" };
     const newScore = {
       name: user.userName,
       score,
@@ -56,17 +71,17 @@ export function Match() {
       time: now.toLocaleTimeString(),
     };
     highScores.push(newScore);
-    localStorage.setItem('highScores', JSON.stringify(highScores));
+    localStorage.setItem("highScores", JSON.stringify(highScores));
   }
 
   return (
-    <main className='container-fluid bg-secondary text-center'>
+    <main className="container-fluid bg-secondary text-center">
       <div className="Game">
         {isGameOver ? (
           <div className="gameOver">
             <h1>You Win!</h1>
             <p>Your final score: {score}</p>
-            <button onClick={() => {restartGame}}>Play Again</button>
+            <button onClick={restartGame}>Play Again</button>
           </div>
         ) : (
           <>
@@ -90,7 +105,10 @@ export function Match() {
             <button
               type="button"
               className="restartButton"
-              onClick={() => restartGame()}>Restart</button>
+              onClick={restartGame}
+            >
+              Restart
+            </button>
           </>
         )}
       </div>
