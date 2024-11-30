@@ -32,8 +32,7 @@ My HTML section of code includes six pages of code. The Index page which include
 ### CSS
 My CSS section of code includes a consistent style between all pages of the website. It is mostly made up of soft sided shapes and primary colors. The buttons on the web react to the mouse being over them and clickable objects are known so by the cursor changing. The Scores section has also been made into an easily readable table.
 ### React
-- **login** - When you press enter or the login button it takes you to the home page
-- **database** - Stores information about individuals accounts
+My React components include makeing the Match game work. This game is pretty fast paced and allows the user to resart the game if they would like. Once the game is finsihed the user can see their scores on the scores page. The user is also able to log in by creating a password and username.
 ### Service Deliverable
 - **scoring** - Recieves a player's score and returns the high score
 ### DB/Login
