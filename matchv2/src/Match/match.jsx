@@ -48,9 +48,9 @@ export function Match() {
   function saveScore(score) {
     const now = new Date();
     const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
-    const userName = localStorage.getItem('userName') || "Player";
+    const user = JSON.parse(localStorage.getItem('credentials')) || "Player";
     const newScore = {
-      name: userName,
+      name: user.userName,
       score,
       date: now.toLocaleDateString(),
       time: now.toLocaleTimeString(),
