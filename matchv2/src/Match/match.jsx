@@ -9,6 +9,7 @@ export function Match() {
   const [flipped, setFlipped] = useState(() => JSON.parse(localStorage.getItem("flipped")) || []);
   const [score, setScore] = useState(() => JSON.parse(localStorage.getItem("score")) || 0);
   const [matched, setMatched] = useState(() => JSON.parse(localStorage.getItem("matched")) || []);
+  const [scoreSaved, setScoreSaved] = useState(() => JSON.parse(localStorage.getItem("scoreSaved")) || false);
   const isGameOver = matched.length === cards.length;
 
   function shuffle() {
@@ -22,7 +23,15 @@ export function Match() {
     localStorage.setItem("flipped", JSON.stringify(flipped));
     localStorage.setItem("score", JSON.stringify(score));
     localStorage.setItem("matched", JSON.stringify(matched));
-  }, [cards, flipped, score, matched]);
+    localStorage.setItem("scoreSaved", JSON.stringify(scoreSaved));
+  }, [cards, flipped, score, matched, scoreSaved]);
+
+  useEffect(() => {
+    if (isGameOver && !scoreSaved) {
+      saveScore(score);
+      setScoreSaved(true);
+    }
+  }, [isGameOver, scoreSaved, score]);
 
   function match(index) {
     if (matched.includes(index) || flipped.length === 2 || flipped.includes(index)) {
@@ -50,28 +59,28 @@ export function Match() {
     setScore(0);
     setMatched([]);
     setFlipped([]);
+    setScoreSaved(false);
     localStorage.removeItem("cards");
-    localStorage.removeItem("flipped");
     localStorage.removeItem("score");
+    localStorage.removeItem("flipped");
     localStorage.removeItem("matched");
-  }
-  
-  if (isGameOver) {
-    saveScore(score);
+    localStorage.removeItem("scoreSaved");
   }
 
-  function saveScore(score) {
-    const now = new Date();
-    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-    const user = JSON.parse(localStorage.getItem("credentials")) || { userName: "Player" };
-    const newScore = {
-      name: user.userName,
-      score,
-      date: now.toLocaleDateString(),
-      time: now.toLocaleTimeString(),
-    };
-    highScores.push(newScore);
-    localStorage.setItem("highScores", JSON.stringify(highScores));
+  async function saveScore(score) {
+    try {
+      const date = new Date().toLocaleDateString();
+      const user = JSON.parse(localStorage.getItem("credentials")) || { userName: "Player" };
+      const newScore = { name: user.userName, score: score, date: date };
+
+      await fetch('/api/score', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newScore),
+      });
+    } catch (error) {
+      console.error("Failed to save score:", error);
+    }
   }
 
   return (
@@ -91,7 +100,7 @@ export function Match() {
                   <button
                     type="button"
                     onClick={() => match(index)}
-                    className={`
+                    className={`card-button
                       ${flipped.includes(index) ? "flipped" : ""}
                       ${matched.includes(index) ? "matched" : ""}
                     `}

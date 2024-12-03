@@ -22,7 +22,13 @@ function App() {
   function logout() {
     setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem("cards");
+    localStorage.removeItem("score");
+    localStorage.removeItem("flipped");
+    localStorage.removeItem("matched");
+    localStorage.removeItem("scoreSaved");
     window.location.href = '/';
+    
   }
 
   return (

@@ -2,57 +2,53 @@ import React, { useState, useEffect } from "react";
 import './scores.css';
 
 export function Scores() {
-  const [highScores, setHighScores] = useState([]);
+  const [scores, setScores] = useState([]);
 
   useEffect(() => {
-    const scores = JSON.parse(localStorage.getItem('highScores')) || [];
-    setHighScores(scores);
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((fetchedScores) => {
+        const sortedScores = [...fetchedScores].sort((a, b) => a.score - b.score);
+        setScores(sortedScores);
+      });
   }, []);
 
-  function getUniqueScores(scores) {
-    const seen = new Set();
-    return scores.filter((entry) => {
-      const identifier = `${entry.name}-${entry.score}-${entry.date}`;
-      if (seen.has(identifier)) {
-        return false;
-      }
-      seen.add(identifier);
-      return true;
-    });
-  }
-
-  const sortedScores = [...highScores].sort((a, b) => a.score - b.score);
-
-  const uniqueScores = getUniqueScores(sortedScores);
-
   function clearScores() {
-    localStorage.removeItem('highScores');
-    setHighScores([]);
+    setScores([]);
+    fetch('/api/scores', { method: 'DELETE' })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to clear scores");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
+
+  const scoreRows = scores.map((score, i) => (
+    <tr key={i}>
+      <td>{i + 1}</td>
+      <td>{score.name}</td>
+      <td>{score.score}</td>
+      <td>{score.date}</td>
+    </tr>
+  ));
 
   return (
-    <main className='container-fluid bg-secondary text-center'>
+    <main className="container-fluid bg-secondary text-center">
       <div className="Scores">
         <h3>High Scores:</h3>
-        <table className='HighScoresTable'>
+        <table className="HighScoresTable">
           <thead>
             <tr>
-              <th>Place</th>
+              <th>#</th>
               <th>Name</th>
               <th>Score</th>
               <th>Date</th>
             </tr>
           </thead>
-          <tbody>
-            {uniqueScores.map((entry, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{entry.name}</td>
-                <td>{entry.score}</td>
-                <td>{entry.date}</td>
-              </tr>
-            ))}
-          </tbody>
+          <tbody>{scoreRows}</tbody>
         </table>
         <button
           type="button"

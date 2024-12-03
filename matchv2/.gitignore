@@ -4,4 +4,6 @@ deployFiles.sh
 
 deployReact.sh
 
+deployService.sh
+
 node_modules
