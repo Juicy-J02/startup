@@ -1,9 +1,12 @@
 const { MongoClient } = require('mongodb');
+const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 const config = require('./dbConfig.json');
 
-const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}/?`;
+const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
 const db = client.db('match');
+const userCollection = db.collection('user');
 const scoreCollection = db.collection('score');
 
 (async function testConnection() {
@@ -14,8 +17,31 @@ const scoreCollection = db.collection('score');
   process.exit(1);
 });
 
+function getUser(userName) {
+  return userCollection.findOne({ userName: userName });
+}
+
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
+
+async function createUser(userName, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
+  const user = {
+    userName: userName,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  await userCollection.insertOne(user);
+  return user;
+}
+
 async function addScore(score) {
   return scoreCollection.insertOne(score);
+}
+
+async function deleteScores(userName) {
+  return scoreCollection.deleteMany({ userName : userName });
 }
 
 function getHighScores() {
@@ -28,12 +54,11 @@ function getHighScores() {
   return cursor.toArray();
 }
 
-async function deleteScores() {
-  return scoreCollection.deleteMany({});
-}
-
 module.exports = {
+  getUser,
+  getUserByToken,
+  createUser,
   addScore,
+  deleteScores,
   getHighScores,
-  deleteScores
 };

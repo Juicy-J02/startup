@@ -1,29 +1,38 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import './login.css';
 
 export function Login({ setIsLoggedIn }) {
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to navigate programmatically
 
-  function loginUser() {
-    const user = JSON.parse(localStorage.getItem('credentials'));
-    if (user && user.userName === userName && user.password === password) {
+  async function loginUser() {
+    loginOrCreate(`/api/auth/login`);
+  }
+
+  async function createUser() {
+    loginOrCreate(`/api/auth/create`);
+  }
+
+  async function loginOrCreate(endpoint) {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify({ userName: userName, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    
+    if (response?.status === 200) {
+      localStorage.setItem('userName', userName);
       setIsLoggedIn(true);
       navigate('/home');
     } else {
-      setDisplayError('Invalid Credentials');
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
     }
-  }
-
-  function createUser() {
-    const credentials = {
-      userName: userName,
-      password: password
-    };
-    localStorage.setItem('credentials', JSON.stringify(credentials));
   }
 
   return (

@@ -70,9 +70,9 @@ export function Match() {
   async function saveScore(score) {
     try {
       const date = new Date().toLocaleDateString();
-      const user = JSON.parse(localStorage.getItem("credentials")) || { userName: "Player" };
-      const newScore = { name: user.userName, score: score, date: date };
-
+      const userName = JSON.parse(localStorage.getItem("userName")) || { userName: "Player" };
+      const newScore = { name: userName, score: score, date: date };
+      console.log('n')
       await fetch('/api/score', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },

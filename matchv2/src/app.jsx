@@ -21,7 +21,6 @@ function App() {
 
   function logout() {
     setIsLoggedIn(false);
-    localStorage.removeItem('isLoggedIn')
     localStorage.removeItem("cards");
     localStorage.removeItem("score");
     localStorage.removeItem("flipped");
