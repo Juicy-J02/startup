@@ -7,3 +7,5 @@ deployReact.sh
 deployService.sh
 
 node_modules
+
+dbConfig.json
