@@ -34,9 +34,8 @@ My CSS section of code includes a consistent style between all pages of the webs
 ### React
 My React components include makeing the Match game work. This game is pretty fast paced and allows the user to resart the game if they would like. Once the game is finsihed the user can see their scores on the scores page. The user is also able to log in by creating a password and username.
 ### Service Deliverable
-My Service components includes two elements. One taht keeps a backend log of the scores that the player gets. This is saved once the primary game is finished and posted in the scores section. This data can also be deleted which refreshes the scores page. I also have a call to a image service that provides a little more to look at on the about section.
+My Service components includes two elements. One that keeps a backend log of the scores that the player gets. This is saved once the primary game is finished and posted in the scores section. This data can also be deleted which refreshes the scores page. I also have a call to a image service that provides a little more to look at on the about section.
 ### DB/Login
-- **user registration** - Creates a new account in the database.
-- **existing user** - Stores the score and deck of a user that already exists
+My Database/Login componetents replaced some previously existing components and improved on them. The database scores both users and scores so that your account and scores will be saved externally. The services are all the same but now interact with the database.
 ### Websocket
 - **WebSocket data displayed** - Players can see high scores of other players
