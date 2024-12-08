@@ -33,6 +33,30 @@ export function Match() {
     }
   }, [isGameOver, scoreSaved, score]);
 
+  async function saveScore(score) {
+    const date = new Date().toLocaleDateString();
+    const storedUser = JSON.parse(localStorage.getItem("userName"));
+    const userName = storedUser.name;
+    try {
+      const response = await fetch('/api/score', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name : userName, score : score, date : date }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Score saved:', data);
+      } else {
+        console.error('Error saving score:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
+  }
+
   function match(index) {
     if (matched.includes(index) || flipped.length === 2 || flipped.includes(index)) {
       return;
@@ -65,22 +89,6 @@ export function Match() {
     localStorage.removeItem("flipped");
     localStorage.removeItem("matched");
     localStorage.removeItem("scoreSaved");
-  }
-
-  async function saveScore(score) {
-    try {
-      const date = new Date().toLocaleDateString();
-      const userName = JSON.parse(localStorage.getItem("userName")) || { userName: "Player" };
-      const newScore = { name: userName, score: score, date: date };
-      console.log('n')
-      await fetch('/api/score', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(newScore),
-      });
-    } catch (error) {
-      console.error("Failed to save score:", error);
-    }
   }
 
   return (

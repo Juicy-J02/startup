@@ -6,7 +6,7 @@ export function Login({ setIsLoggedIn }) {
   const [userName, setUserName] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
-  const navigate = useNavigate(); // Hook to navigate programmatically
+  const navigate = useNavigate();
 
   async function loginUser() {
     loginOrCreate(`/api/auth/login`);
@@ -26,7 +26,7 @@ export function Login({ setIsLoggedIn }) {
     });
     
     if (response?.status === 200) {
-      localStorage.setItem('userName', userName);
+      localStorage.setItem("userName", JSON.stringify({ name : userName }));
       setIsLoggedIn(true);
       navigate('/home');
     } else {

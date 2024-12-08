@@ -41,7 +41,7 @@ async function addScore(score) {
 }
 
 async function deleteScores(userName) {
-  return scoreCollection.deleteMany({ userName : userName });
+  return scoreCollection.deleteMany({ name : userName });
 }
 
 function getHighScores() {

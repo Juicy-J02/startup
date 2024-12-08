@@ -19,25 +19,6 @@ app.set('trust proxy', true);
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-apiRouter.get('/scores', async (req, res) => {
-  const scores = await DB.getHighScores();
-  res.send(scores);
-});
-
-apiRouter.post('/score', async (req, res) => {
-  const score = { ...req.body, ip: req.ip };
-  await DB.addScore(score);
-  const scores = await DB.getHighScores();
-  res.send(scores);
-});
-
-apiRouter.delete('/scores', async (req, res) => {
-  const authToken = req.cookies[authCookieName];
-  const user = await DB.getUserByToken(authToken);
-  const scores = await DB.deleteScores(user.userName);
-  res.send(scores);
-});
-
 apiRouter.post('/auth/create', async (req, res) => {
   if (await DB.getUser(req.body.userName)) {
     res.status(409).send({ msg: 'Existing user' });
@@ -65,6 +46,36 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.delete('/auth/logout', (_req, res) => {
   res.clearCookie(authCookieName);
   res.status(204).end();
+});
+
+const secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+  const authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+
+secureApiRouter.get('/scores', async (req, res) => {
+  const scores = await DB.getHighScores();
+  res.send(scores);
+});
+
+secureApiRouter.post('/score', async (req, res) => {
+  const score = { ...req.body, ip: req.ip };;
+  await DB.addScore(score);
+  const scores = await DB.getHighScores();
+  res.send(scores);
+});
+
+secureApiRouter.delete('/scores', async (req, res) => {
+  const scores = await DB.deleteScores(req.body.name);
+  res.send(scores);
 });
 
 function setAuthCookie(res, authToken) {
