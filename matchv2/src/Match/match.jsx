@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { GameEvent, GameNotifier } from '../webSocket.js';
 import './match.css';
 
 export function Match() {
@@ -37,25 +38,22 @@ export function Match() {
     const date = new Date().toLocaleDateString();
     const storedUser = JSON.parse(localStorage.getItem("userName"));
     const userName = storedUser.name;
+    const result = { name: userName, score, date };
+  
     try {
       const response = await fetch('/api/score', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({name : userName, score : score, date : date }),
+        body: JSON.stringify(result),
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Score saved:', data);
-      } else {
-        console.error('Error saving score:', response.statusText);
-      }
+      GameNotifier.broadcastEvent(userName, GameEvent.End, result);
     } catch (error) {
       console.error('Network error:', error);
     }
   }
+  
 
   function match(index) {
     if (matched.includes(index) || flipped.length === 2 || flipped.includes(index)) {
