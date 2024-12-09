@@ -13,7 +13,6 @@ A mockup of the project I put together using Python Pygame:
 
 ### Key Features
 - Individual accounts that save progression and score
-- Ability to customize deck for a new game
 - High Scores display and show all time best for all players
 - Online Multiplayer (Maybe down the line)
 
