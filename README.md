@@ -38,4 +38,4 @@ My Service components includes two elements. One that keeps a backend log of the
 ### DB/Login
 My Database/Login componetents replaced some previously existing components and improved on them. The database scores both users and scores so that your account and scores will be saved externally. The services are all the same but now interact with the database.
 ### Websocket
-- **WebSocket data displayed** - Players can see high scores of other players
+My Websocket component adds an aditional feature to the home page. The Websocket allows users who are on this screen to see updates from other people who are finishing games on the website. This service allows you to see the username and score of the individuals.
