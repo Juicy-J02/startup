@@ -284,3 +284,84 @@ console.log(result); // Will log "Promise resolved!" if resolved
 console.log(error); // Will log "Promise rejected!" if rejected 
 });
 
+
+Final Notes:
+What is the default port for HTTP/HTTPS/SSH?:
+HTTP: 80
+HTTPS: 443
+SSH: 22
+
+What does an HTTP status code in the range of 300/400/500 indicate?:
+300: Redirection (e.g., 301 for permanent redirect, 302 for temporary redirect)
+400: Client Errors (e.g., 404 for Not Found, 403 for Forbidden)
+500: Server Errors (e.g., 500 for Internal Server Error, 502 for Bad Gateway)
+
+What does the HTTP header content-type allow you to do?:
+The Content-Type header specifies the media type of the resource, helping the server and client understand how to interpret the body of the request or response (e.g., application/json, text/html).
+
+What does a “Secure cookie”/”Http-only cookie”/”Same-site cookie” do?:
+Secure cookie: Can only be sent over HTTPS, ensuring the cookie is encrypted in transit.
+Http-only cookie: Cannot be accessed through JavaScript (helps prevent XSS attacks).
+Same-site cookie: Restricts the sending of cookies to only same-site requests, mitigating CSRF attacks.
+
+Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /api/document?:
+You’ll need the specific code to provide the exact answer, but generally, Express middleware will log details about the incoming request such as the HTTP method (GET) and URL path (/api/document).
+
+Given the following Express service code: What does the following front end JavaScript that performs a fetch return?:
+This depends on the Express service code and the fetch request. Typically, a fetch will return a promise that resolves with the response object, which can be parsed to access data like JSON.
+
+Given the following MongoDB query, select all of the matching documents {name:Mark}:
+This query will return all documents in the collection where the name field is equal to "Mark".
+
+How should user passwords be stored?:
+User passwords should never be stored in plain text. They should be hashed using a strong cryptographic algorithm like bcrypt, scrypt, or Argon2.
+
+Assuming the following node.js websocket code in the back end, and the following front end websocket code, what will the front end log to the console?:
+Depending on the WebSocket interactions in both the front and back ends, the front end will likely log the message or data received from the WebSocket server once the connection is established.
+
+What is the websocket protocol intended to provide?:
+WebSocket provides a full-duplex communication channel over a single TCP connection, allowing for real-time, low-latency communication between the client and server.
+
+What do the following acronyms stand for? JSX, JS, AWS, NPM, NVM:
+JSX: JavaScript XML
+JS: JavaScript
+AWS: Amazon Web Services
+NPM: Node Package Manager
+NVM: Node Version Manager
+
+Assuming an HTML document with a body element. What text content will the following React component generate?:
+This depends on the React component code. Typically, a React component will render dynamic content based on the component's state or props.
+
+Given a set of React components that include each other, what will be generated?:
+React will render a tree of components, with each parent component rendering its child components. The final output will be a hierarchical structure of HTML elements.
+
+What does a React component with React.useState do?:
+React.useState is a hook that allows a functional component to manage state. It returns an array with the current state and a function to update the state.
+
+What are React Hooks used for?:
+React Hooks allow functional components to have state, side effects, context, and more, without needing to convert them to class components.
+
+What does the State Hook/Context Hook/Ref Hook/Effect Hook/Performance Hook do?:
+State Hook: useState manages component state.
+Context Hook: useContext provides access to React context, allowing components to consume values from a provider.
+Ref Hook: useRef provides access to a DOM element or a value that persists across re-renders.
+Effect Hook: useEffect runs side effects (e.g., data fetching, DOM manipulation) after render.
+Performance Hook: useMemo and useCallback help optimize performance by memoizing values or functions.
+
+Given React Router code, select statements that are true.:
+The correct statements will depend on the exact code. Generally, React Router handles navigation and rendering of components based on the current URL path.
+
+What does the package.json file do?:
+package.json holds metadata about a Node.js project, including dependencies, scripts, and configuration details like project name and version.
+
+What does the fetch function do?:
+The fetch function initiates an HTTP request and returns a promise that resolves to the response of the request.
+
+What does node.js do?:
+Node.js is a runtime environment for executing JavaScript outside of the browser, typically used for server-side applications.
+
+What does pm2 do?:
+PM2 is a process manager for Node.js applications, providing features like process monitoring, clustering, and automatic restarts.
+
+What does Vite do?:
+Vite is a build tool and development server that provides fast hot module replacement (HMR) and optimizes the development experience for modern JavaScript applications.
