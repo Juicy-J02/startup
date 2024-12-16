@@ -36,5 +36,7 @@ My React components include makeing the Match game work. This game is pretty fas
 My Service components includes two elements. One that keeps a backend log of the scores that the player gets. This is saved once the primary game is finished and posted in the scores section. This data can also be deleted which refreshes the scores page. I also have a call to a image service that provides a little more to look at on the about section.
 ### DB/Login
 My Database/Login componetents replaced some previously existing components and improved on them. The database scores both users and scores so that your account and scores will be saved externally. The services are all the same but now interact with the database.
+
+The simon for this one was pushed but I had to push the simon websocket on top of it before it got graded
 ### Websocket
 My Websocket component adds an aditional feature to the home page. The Websocket allows users who are on this screen to see updates from other people who are finishing games on the website. This service allows you to see the username and score of the individuals.
